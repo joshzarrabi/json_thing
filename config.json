@@ -1,0 +1,32 @@
+{
+  "log": ["*"],
+  "databases": {
+    "db": {
+      "server": "http://50.17.111.19:8091",
+      "bucket" : "default",
+      "users": { "GUEST": { "disabled": false, "admin_channels": ["*"] } },
+      "shadow" : {
+      	"server" : "http://50.17.111.19:8091", 
+      	"bucket" : "shadow_bucket"
+      },
+      "sync": 
+ 		`
+      function(doc, oldDoc) {
+        if (doc.type == "reject_me") {
+	      throw({forbidden : "Rejected document"})
+        } else if (doc.type == "bar") {
+	  // add "bar" docs to the "important" channel
+            channel("important");
+	} else if (doc.type == "secret") {
+          if (!doc.owner) {
+            throw({forbidden : "Secret documents must have an owner field"})
+          }
+	} else {
+	    // all other documents just go into all channels listed in the doc["channels"] field
+	    channel(doc.channels)
+	}
+      }
+    `
+    }
+  }
+}
