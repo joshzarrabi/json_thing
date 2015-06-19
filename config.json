@@ -9,10 +9,6 @@
       	"server" : "http://50.17.111.19:8091", 
       	"bucket" : "shadow_bucket"
       },
-      //"persona" : { 
-      	//"origin" : "http://e-mission.berkeley.edu",
-      	//"register" :  "true"
-      	//},
       "sync": 
  		`
    function(doc, oldDoc) {
@@ -27,8 +23,6 @@
           }
 	} else {
 	    // all other documents just go into all channels listed in the doc["channels"] field
-	    //requireUser(doc.username);
-	    //channel("user-" + doc.username);
 	    channel(doc.channels)
 	}
       }
