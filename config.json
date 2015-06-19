@@ -9,6 +9,10 @@
       	"server" : "http://50.17.111.19:8091", 
       	"bucket" : "shadow_bucket"
       },
+      "persona" : { 
+      	"origin" : "http://e-mission.berkeley.edu",
+      	"register" :  "true"
+      	},
       "sync": 
  		`
       function(doc, oldDoc) {
