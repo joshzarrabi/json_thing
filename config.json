@@ -4,7 +4,7 @@
     "db": {
       "server": "http://50.17.111.19:8091",
       "bucket" : "default",
-      "users": { "GUEST": { "disabled": false, "admin_channels": ["*"] } },
+      "users": { "GUEST": { "disabled": true, "admin_channels": ["*"] } },
       "shadow" : {
       	"server" : "http://50.17.111.19:8091", 
       	"bucket" : "shadow_bucket"
